@@ -10,14 +10,14 @@ exports.createChatEngineUser = functions.auth.user().onCreate((user) => {
       email: user.email,
       first_name: user.displayName,
     },
-    { headers: { "Private-Key": "1091635c-f20c-4f9f-aeec-3d6c705df8d1" } }
+    { headers: { "Private-Key": process.env.PRIVATE_KEY } }
   );
 });
 
 exports.deleteChatEngineUser = functions.auth.user().onDelete((user) => {
   axios.delete("https://api.chatengine.io/users/me/", {
     headers: {
-      "Project-ID": "6e1ff6a0-636a-442f-aeff-181cfcc87da8",
+      "Project-ID": process.env.PROJECT_ID,
       "User-Name": user.email,
       "User-Secret": user.uid,
     },
