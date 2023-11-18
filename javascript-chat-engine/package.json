@@ -1,0 +1,14 @@
+{
+  "name": "typescript-chat-engine",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "chat-engine": "^0.9.21"
+  }
+}

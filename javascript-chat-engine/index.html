@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="node_modules/chat-engine/dist/chat-engine.js"></script>
+  <title>Document</title>
+</head>
+<body>
+  <div class="container">Hello</div>
+  <button onClick={fetchUser()}>Fetch User</button>
+  <button onClick={createUser()}>Create User</button>
+  <script>
+    if(typeof ChatEngineCore == "undefined") {
+      alert('Failed to load PubNub ChatEngine');
+    }
+    // if(ChatEngineCore) {
+    //   alert('It works!');
+    // }
+    const fetchUser = async () => {
+      let data = await fetch("https://api.chatengine.io/users/search/", {
+        method: 'GET',
+        headers: {
+          'Project-Id': '6e1ff6a0-636a-442f-aeff-181cfcc87da8',
+          'User-Name': 'u6511923@au.edu',
+          'User-Secret': 'o7F5gSJWGBVRLEKSAenPeforr5E3'
+        }
+      }).then(data => data.json());
+      console.log(data, 20)
+    }
+
+    const createUser = async() => {
+      let user = {
+        username: "Sai Pe Pu",
+        secret: 234234,
+        email: "saipepu@gmail.com",
+        first_name: "Sai",
+      }
+      let data = await fetch("https://api.chatengine.io/users/",{
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Private-Key': '1091635c-f20c-4f9f-aeec-3d6c705df8d1'
+        },
+        body: JSON.stringify(user)
+      }).then(data => data.json())
+      console.log(data);
+    }
+
+  </script>
+</body>
+
+</html>
